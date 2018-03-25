@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container">
+    {% if item.get('SC_NAME') is none %}
+    <div class="no-result">
+        <i class="fas fa-exclamation-circle fa-2x"></i> <br>
+        Sorry, we couldn't find any results matching "{{stock}}"
+    </div>
+    {% else %}
+    <div class="panel">
+        <div class="panel-heading">#{{item.get('SC_NAME') }}</div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Open</th>
+                <th class="high">High</th>
+                <th class="low">Low</th>
+                <th>Close</th>
+                <th>Last</th>
+                <th>PrevClose</th>
+                <th>No Of Trades</th>
+                <th>No Of Shares</th>
+                <th>Net Worth</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ item.get('SC_NAME') }}</td>
+                <td>{{ item.get('OPEN') }}</td>
+                <th class="high">{{ item.get('HIGH') }}
+                </td>
+                <th class="low">{{ item.get('LOW') }}
+                </td>
+                <td>{{ item.get('CLOSE') }}</td>
+                <td>{{ item.get('LAST') }}</td>
+                <td>{{ item.get('PREVCLOSE') }}</td>
+                <td>{{ item.get('NO_TRADES') }}</td>
+                <td>{{ item.get('NO_OF_SHRS') }}</td>
+                <td>{{ item.get('NET_TURNOV') }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

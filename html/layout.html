@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zerodha Python Task</title>
+
+    <!-- Bootstrap minified css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Font awesome css -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
+          integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="assests/css/style.css">
+
+</head>
+<body>
+
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index">ZerodhaTask</a>
+        </div>
+        <form class="navbar-form navbar-right" role="search" method="get" action="get_stock">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="search stock by name..." name="stock_name">
+                <div class="input-group-btn">
+                    <button class="btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</nav>
+
+<!-- index and search table -->
+{% block body %}{% endblock %}
+
+<footer class="footer">
+    <div class="container">
+        <ul class="social-icon text-center">
+            <li><p>Handcrafted by Praveen Rj. </p></li>
+            <li><a href="https://github.com/praveenrj25" title="github" target="_blank"><i
+                    class="fab fa-github"></i></a></li>
+            <li>
+                <a href="https://www.linkedin.com/in/praveen-raj-325b2057?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BSDczGTrYRDqL0ne8HKsgAQ%3D%3D"
+                   title="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="http://www.hackerearth.com/@praveen128" title="hackerearth" target="_blank"><i
+                    class="fas fa-heading"></i></a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>
