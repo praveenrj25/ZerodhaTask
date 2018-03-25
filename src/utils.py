@@ -3,7 +3,7 @@ import requests
 import zipfile
 import io
 import redis
-from ZerodhaTask.src import constants
+from . import constants
 
 
 # returns iframe's url
