@@ -1,11 +1,7 @@
 import cherrypy
 from jinja2 import Environment, FileSystemLoader
 import os
-import sys
-
-sys.path.insert(0, "./src")
-
-from .src import *
+from ZerodhaTask.src import utils
 
 # environment loader for html files
 env = Environment(loader=FileSystemLoader('html'))
