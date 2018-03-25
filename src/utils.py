@@ -3,7 +3,7 @@ import requests
 import zipfile
 import io
 import redis
-from . import constants
+from .constants import *
 
 
 # returns iframe's url
@@ -22,22 +22,22 @@ def get_zip_file_url(attr_list):
 
 # function to connect redis database
 def connect_redis_db():
-    r = redis.StrictRedis(host=constants.REDIS_HOST, port=constants.REDIS_PORT,
-                          password=constants.REDIS_PWD, charset=constants.REDIS_CHARSET, decode_responses=True)
+    r = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT,
+                          password=REDIS_PWD, charset=REDIS_CHARSET, decode_responses=True)
     return r
 
 
 # returns absolute file path to work on
 def get_downloaded_file_path():
-    page = requests.get(constants.BSE_URL)  # get page content from API
-    soup = BeautifulSoup(page.content, constants.HTML_PARSER)
+    page = requests.get(BSE_URL)  # get page content from API
+    soup = BeautifulSoup(page.content, HTML_PARSER)
 
     '''The desired link is in iframe. 
     So find frame and get source url'''
-    iframe = soup.find(constants.IFRAME)
-    frame_page = requests.get(constants.URL_PREFIX + get_frame_source_url(iframe))
-    soup = BeautifulSoup(frame_page.content, constants.HTML_PARSER)
-    resultant_list = soup.select(constants.ZIP_FILE_LOCATOR_ID)
+    iframe = soup.find(IFRAME)
+    frame_page = requests.get(URL_PREFIX + get_frame_source_url(iframe))
+    soup = BeautifulSoup(frame_page.content, HTML_PARSER)
+    resultant_list = soup.select(ZIP_FILE_LOCATOR_ID)
 
     # get zip file url
     zip_file_url = get_zip_file_url(resultant_list)
@@ -46,9 +46,9 @@ def get_downloaded_file_path():
     # read zip contents
     z = zipfile.ZipFile(io.BytesIO(zip_file.content))
     # extracts it to a folder
-    z.extractall(constants.RESOURCES)
+    z.extractall(RESOURCES)
     # returns absolute file path
-    return str(constants.RESOURCES + '/' + z.namelist()[0])
+    return str(RESOURCES + '/' + z.namelist()[0])
 
 
 # returns top 10 stock list
@@ -80,7 +80,7 @@ def get_top_10_list():
     for hashes in conn.keys('*'):
         db_values.append(conn.hgetall(hashes))
 
-    sorted_list = sorted(db_values, key=lambda k: (float(k[constants.CLOSE]) - float(k[constants.OPEN])), reverse=True)
+    sorted_list = sorted(db_values, key=lambda k: (float(k[CLOSE]) - float(k[OPEN])), reverse=True)
     return sorted_list[:10]
 
 
