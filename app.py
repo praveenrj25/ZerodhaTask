@@ -1,7 +1,11 @@
 import cherrypy
 from jinja2 import Environment, FileSystemLoader
 import os
-from .src import utils
+import sys
+
+sys.path.insert(0, "./src")
+
+from .src import *
 
 # environment loader for html files
 env = Environment(loader=FileSystemLoader('html'))
