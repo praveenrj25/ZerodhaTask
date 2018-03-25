@@ -61,7 +61,6 @@ def get_top_10_list():
     Store the split values in db with appropriate fields'''
     with open(equity_csv_file, 'r') as file:
         headers = next(file).split(',')  # split headers for hashes filed entries
-        i = 1
         for line in file:
             values = line.split(',')
             mapping = {headers[0]: values[0].strip(), headers[1]: values[1].strip(), headers[2]: values[2].strip(),
@@ -70,9 +69,6 @@ def get_top_10_list():
                        headers[9]: float(values[9]), headers[10]: int(values[10]), headers[11]: int(values[11]),
                        headers[12]: float(values[12])}
             conn.hmset(values[1].strip(), mapping)
-            i = i + 1
-            if i == 20:
-                break
 
     '''run redis command to get all hash values.
     Return top 10 list based on the diff between close price & open price'''
