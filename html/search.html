@@ -1,12 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 <div class="container">
-    {% if not bool(item) %}
-    <div class="no-result">
-        <i class="fas fa-exclamation-circle fa-2x"></i> <br>
-        Sorry, we couldn't find any results matching "{{stock}}"
-    </div>
-    {% else %}
+    {% if item %}
     <div class="panel">
         <div class="panel-heading">#{{item.get('SC_NAME') }}</div>
         <table class="table table-bordered">
@@ -41,6 +36,11 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    {% else % }
+    <div class="no-result">
+        <i class="fas fa-exclamation-circle fa-2x"></i> <br>
+        Sorry, we couldn't find any results matching "{{stock}}"
     </div>
     {% endif %}
 </div>
