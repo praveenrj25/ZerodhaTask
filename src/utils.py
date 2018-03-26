@@ -56,6 +56,7 @@ def get_top_10_list():
     equity_csv_file = get_downloaded_file_path()  # get file source
 
     conn = connect_redis_db()  # get redis connection
+    conn.flushall()  # flush all data before insert new one
 
     ''' open csv file and read each lines.
     Store the split values in db with appropriate fields'''

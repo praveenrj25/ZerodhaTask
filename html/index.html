@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
 <div class="container">
+    {% if not data %}
+    <div class="no-result">
+        <i class="fas fa-exclamation-circle fa-2x"></i> <br>
+        Something went wrong. Please try later
+    </div>
+    {% else %}
     <div class="panel">
         <div class="panel-heading">Top 10 Stocks</div>
         <table class="table table-bordered">
@@ -38,5 +44,6 @@
             </tbody>
         </table>
     </div>
+    {% endif %}
 </div>
 {% endblock %}

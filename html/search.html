@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 <div class="container">
-    {% if item.get('SC_NAME') is none %}
+    {% if not bool(item) %}
     <div class="no-result">
         <i class="fas fa-exclamation-circle fa-2x"></i> <br>
         Sorry, we couldn't find any results matching "{{stock}}"
